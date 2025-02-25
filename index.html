@@ -9,27 +9,32 @@
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px 20px;
+      padding-top: 50px;
     }
     .convite {
-      background-color: #ffffff;
+      background-color: #fff;
       color: #333;
-      max-width: 600px;
-      margin: 0 auto;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
-    h1 {
-      margin-bottom: 15px;
-    }
-    ul {
-      text-align: left;
       display: inline-block;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      position: relative;
     }
-    .endereco {
-      margin-top: 20px;
-      font-weight: bold;
+    button {
+      padding: 12px 25px;
+      margin: 15px;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #sim {
+      background-color: #28a745;
+    }
+    #nao {
+      background-color: #dc3545;
+      position: absolute;
     }
   </style>
 </head>
@@ -37,8 +42,8 @@
   <div class="convite">
     <h1>Olá GKMER!</h1>
     <p>Gostaríamos de te convidar para um <strong>Happy Hour nessa quinta-feira!</strong></p>
-    
-    <ul>
+
+    <ul style="text-align:left;">
       <li>Bem-vindo 2025</li>
       <li>Despedida Celso e Aline</li>
       <li>Boas-vindas aos novos membros do time</li>
@@ -46,9 +51,26 @@
 
     <p><strong>Podemos contar com sua presença?</strong></p>
 
-    <div class="endereco">
-      Endereço: ...
-    </div>
+    <button id="sim" onclick="alert('Confirmado! Te esperamos lá!')">SIM</button>
+    <button id="nao" onmouseover="fugir()">NÃO</button>
+
+    <p style="margin-top:20px;"><strong>Endereço: ...</strong></p>
   </div>
+
+  <script>
+    function fugir() {
+      const btnNao = document.getElementById('nao');
+      const convite = document.querySelector('.convite');
+
+      const maxWidth = convite.clientWidth - btnNao.offsetWidth;
+      const maxHeight = convite.clientHeight - btnNao.offsetHeight;
+
+      const x = Math.floor(Math.random() * maxWidth);
+      const y = Math.floor(Math.random() * maxHeight);
+
+      btnNao.style.left = x + 'px';
+      btnNao.style.top = y + 'px';
+    }
+  </script>
 </body>
 </html>
